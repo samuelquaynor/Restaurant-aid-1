@@ -68,16 +68,17 @@ export default {
   grid-template-columns: 1fr 1fr;
   grid-gap: 30px;
   margin-top: 60px;
-  color: #fff;
 }
 
 .container .card {
-  background: #5cdb95;
+  /* background: #5cdb95; */
   text-align: center;
+  height: 100%;
+  padding: 0.5rem;
 }
 
 .container .card-body h2.card-title {
-  color: #fff;
+  color: #5cdb95;
 }
 
 .container .card-body h2:hover,
@@ -89,7 +90,8 @@ export default {
 
 .container .card-body .card-text {
   background: #05386b;
-  padding: 0.2rem;
+  color: #fff;
+  padding: 0.3rem;
   border-radius: 20px;
   margin: 0.2rem;
 }

@@ -2,18 +2,13 @@
   <div class="">
     <nav class="navbar navbar-light">
       <div class="container-fluid">
-        <a class="" href="#">
-          Resturant Aid
-        </a>
-      </div>
-    </nav>
-    <!-- <nav class="nav-extended indigo darken-3">
-      <div class="nav-content">
-        <router-link to>
-          <span class="nav-title"></span>
+        <router-link to="/">
+          <a class="" href="#">
+            Resturant Aid
+          </a>
         </router-link>
       </div>
-    </nav> -->
+    </nav>
   </div>
 </template>
 
@@ -31,7 +26,7 @@ nav.navbar {
   padding: 0 20px;
   background: #5cdb95;
   width: 100%;
-  height: 50px;
+  height: 4rem;
 }
 nav .container-fluid a {
   color: #05386b;
