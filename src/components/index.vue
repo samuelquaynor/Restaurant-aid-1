@@ -6,19 +6,36 @@
         v-for="restaurant in $store.state.restaurants"
         :key="restaurant.id"
       >
-        <div class="card-content">
-          <router-link
-            :to="{
-              name: 'restaurant',
-              params: { name: restaurant.name, id: restaurant.id },
-            }"
+        <img
+          src="`https://storage.googleapis.com/heny.app/${restaurant.banner}`"
+          class="card-img-top"
+          alt="..."
+        />
+        <div
+          class="card-body"
+          :style="{
+            backgroundImage: `url(https://storage.googleapi.com/heny.app/${restaurant.banner})`,
+          }"
+        >
+          <h2 class="card-title">
+            <router-link
+              tag="h2"
+              :to="{
+                name: 'restaurant',
+                params: { name: restaurant.name, id: restaurant.id },
+              }"
+              >{{ restaurant.name }}</router-link
+            >
+          </h2>
+
+          <!-- <div class="hold-em"> -->
+          <span class="card-text">Location: {{ restaurant.city }}</span>
+          <span v-if="restaurant.delivery" class="card-text"
+            >Delivery: Yes</span
           >
-            <h2 class="indigo-text">{{ restaurant.name }}</h2>
-          </router-link>
-          <div class="hold-em">
-            <p class="chip loca">Location: {{ restaurant.city }}</p>
-            <!-- <p class="chip desc">Description: {{ restaurant.description }}</p> -->
-          </div>
+          <span v-else class="card-text">Delivery: No</span>
+          <!-- <p class="chip desc">Description: {{ restaurant.description }}</p> -->
+          <!-- </div> -->
         </div>
       </div>
     </div>
@@ -32,16 +49,48 @@ export default {
   async created() {
     await this.$store.dispatch("getRestaurants");
   },
+  computed: {
+    /*deBackground: function() {
+      return "https://storage.googleapi.com/heny.app" + restaurant.banner;
+    },*/
+  },
   methods: {},
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
+.index {
+  height: 100%;
+}
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 30px;
   margin-top: 60px;
+  color: #fff;
+}
+
+.container .card {
+  background: #5cdb95;
+  text-align: center;
+}
+
+.container .card-body h2.card-title {
+  color: #fff;
+}
+
+.container .card-body h2:hover,
+.container .card-body h2.router-link-active,
+.container .card-body h2.router-link-exact-active {
+  text-decoration: none;
+  color: #05386b;
+}
+
+.container .card-body .card-text {
+  background: #05386b;
+  padding: 0.2rem;
+  border-radius: 20px;
+  margin: 0.2rem;
 }
 </style>

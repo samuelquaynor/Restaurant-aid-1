@@ -16,6 +16,8 @@ export default {
 </script>
 
 <style>
-#app {
+router-view {
+  margin: 0;
+  padding: 0;
 }
 </style>

@@ -32,6 +32,8 @@ const actions = {
               description
               city
               logo
+              banner
+              delivery
             }
           }
         }
