@@ -7,7 +7,7 @@
         :key="restaurant.id"
       >
         <img
-          src="`https://storage.googleapis.com/heny.app/${restaurant.banner}`"
+          src="https://storage.googleapis.com/heny.app/${restaurant.banner}"
           class="card-img-top"
           alt="..."
         />
@@ -67,7 +67,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 30px;
-  margin-top: 60px;
+  margin-top: 3rem;
 }
 
 .container .card {
