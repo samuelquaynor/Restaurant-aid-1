@@ -1,11 +1,11 @@
 <template>
   <div class="restaurant">
-    <div v-if="restaurant">
-      <h2>{{ restaurant.name }}</h2>
+    <div class v-if="restaurant">
+      <h2 class>{{ restaurant.name }}</h2>
+      <router-link class tag="p" to="/">
+        <span>Back</span>
+      </router-link>
     </div>
-    <router-link to="/">
-      <h4>back</h4>
-    </router-link>
   </div>
 </template>
 
@@ -17,12 +17,12 @@ export default {
   },
   computed: {
     restaurant() {
-      return this.$store.state.restaurants.find((res) => {
+      return this.$store.state.restaurants.find(res => {
         return res.id === this.$route.params.id;
       });
-    },
+    }
   },
-  methods: {},
+  methods: {}
   /*watch: {
     "$route.params.id": {
       handler(val) {
@@ -35,7 +35,15 @@ export default {
 </script>
 
 <style>
-h4 {
-  text-align: center;
+p.router-link-active {
+  width: fit-content;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  background: #05386b;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 40%;
 }
 </style>

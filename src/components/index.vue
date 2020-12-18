@@ -1,22 +1,9 @@
 <template>
   <div class="index">
     <div class="container">
-      <div
-        class="card"
-        v-for="restaurant in $store.state.restaurants"
-        :key="restaurant.id"
-      >
-        <img
-          src="https://storage.googleapis.com/heny.app/${restaurant.banner}"
-          class="card-img-top"
-          alt="..."
-        />
-        <div
-          class="card-body"
-          :style="{
-            backgroundImage: `url(https://storage.googleapi.com/heny.app/${restaurant.banner})`,
-          }"
-        >
+      <div class="card" v-for="restaurant in $store.state.restaurants" :key="restaurant.id">
+        <img :src="banner + restaurant.banner" class="card-img-top" alt="..." />
+        <div class="card-body">
           <h2 class="card-title">
             <router-link
               tag="h2"
@@ -24,15 +11,12 @@
                 name: 'restaurant',
                 params: { name: restaurant.name, id: restaurant.id },
               }"
-              >{{ restaurant.name }}</router-link
-            >
+            >{{ restaurant.name }}</router-link>
           </h2>
 
           <!-- <div class="hold-em"> -->
           <span class="card-text">Location: {{ restaurant.city }}</span>
-          <span v-if="restaurant.delivery" class="card-text"
-            >Delivery: Yes</span
-          >
+          <span v-if="restaurant.delivery" class="card-text">Delivery: Yes</span>
           <span v-else class="card-text">Delivery: No</span>
           <!-- <p class="chip desc">Description: {{ restaurant.description }}</p> -->
           <!-- </div> -->
@@ -48,13 +32,14 @@ export default {
   components: {},
   async created() {
     await this.$store.dispatch("getRestaurants");
+    await this.$store.dispatch("getBanners");
   },
   computed: {
-    /*deBackground: function() {
-      return "https://storage.googleapi.com/heny.app" + restaurant.banner;
-    },*/
+    banner() {
+      return "https://storage.googleapis.com/heny.app/";
+    }
   },
-  methods: {},
+  methods: {}
 };
 </script>
 

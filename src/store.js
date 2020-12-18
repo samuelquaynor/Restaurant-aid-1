@@ -8,6 +8,7 @@ Vue.use(Vuex);
 const state = {
   //   languageIds: [],
   restaurants: [],
+  banners: [],
   restaurant: null,
 };
 
@@ -17,6 +18,16 @@ const mutations = {
   },
   setRestaurant(state, restaurant) {
     state.restaurant = restaurant;
+  },
+  setBanners(state, banners) {
+    for (let i = 0; i < banners.length; i++) {
+      let ans = Object.values(banners[i]);
+      if (ans[1] == "Restaurant") {
+        let neww = ans.shift();
+        let appended = "https://storage.googleapis.com/heny.app/" + neww;
+        state.banners.push(appended);
+      }
+    }
   },
 };
 
@@ -56,6 +67,21 @@ const actions = {
     const response = await apollo.query({ query, variables });
     commit("setRestaurant", { id, data: response.data.restaurant });
     console.log(response.data.restaurant);
+  },
+  async getBanners({ commit }) {
+    const response = await apollo.query({
+      query: gql`
+        {
+          restaurants {
+            data {
+              banner
+            }
+          }
+        }
+      `,
+    });
+    const banners = response.data.restaurants.data;
+    commit("setBanners", banners);
   },
 };
 
