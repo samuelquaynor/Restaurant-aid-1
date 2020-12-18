@@ -1,10 +1,11 @@
 <template>
   <div class="restaurant">
+    <div class="banner bg-image" :style="{ backgroundImage: `url(${banner}` }"></div>
     <div class v-if="restaurant">
       <h2 class>{{ restaurant.name }}</h2>
-      <router-link class tag="p" to="/">
+      <!-- <router-link class tag="p" to="/">
         <span>Back</span>
-      </router-link>
+      </router-link>-->
     </div>
   </div>
 </template>
@@ -20,6 +21,13 @@ export default {
       return this.$store.state.restaurants.find(res => {
         return res.id === this.$route.params.id;
       });
+    },
+    banner() {
+      let myRes = this.$store.state.restaurants.find(res => {
+        return res.id === this.$route.params.id;
+      });
+
+      return "https://storage.googleapis.com/heny.app/" + myRes.banner;
     }
   },
   methods: {}

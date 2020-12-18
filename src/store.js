@@ -10,6 +10,7 @@ const state = {
   restaurants: [],
   banners: [],
   restaurant: null,
+  meals: [],
 };
 
 const mutations = {
@@ -45,6 +46,15 @@ const actions = {
               logo
               banner
               delivery
+              meals {
+                id
+                name
+                image
+                image2
+                price
+                description
+                delivery_price
+              }
             }
           }
         }

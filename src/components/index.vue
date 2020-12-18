@@ -2,25 +2,34 @@
   <div class="index">
     <div class="container">
       <div class="card" v-for="restaurant in $store.state.restaurants" :key="restaurant.id">
-        <img :src="banner + restaurant.banner" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h2 class="card-title">
-            <router-link
-              tag="h2"
-              :to="{
+        <router-link
+          tag="a"
+          :to="{
                 name: 'restaurant',
                 params: { name: restaurant.name, id: restaurant.id },
               }"
-            >{{ restaurant.name }}</router-link>
-          </h2>
+        >
+          <img
+            :src="banner + restaurant.banner"
+            class="card-img-top res-img"
+            :alt="restaurant.name + ' banner'"
+          />
+          <img
+            class="logo img-thumbnail img"
+            :src="banner + restaurant.logo"
+            :alt="restaurant.name + ' logo'"
+          />
+          <div class="card-body">
+            <h2 class="card-title">{{ restaurant.name }}</h2>
 
-          <!-- <div class="hold-em"> -->
-          <span class="card-text">Location: {{ restaurant.city }}</span>
-          <span v-if="restaurant.delivery" class="card-text">Delivery: Yes</span>
-          <span v-else class="card-text">Delivery: No</span>
-          <!-- <p class="chip desc">Description: {{ restaurant.description }}</p> -->
-          <!-- </div> -->
-        </div>
+            <!-- <div class="hold-em"> -->
+            <span class="card-text">Location: {{ restaurant.city }}</span>
+            <span v-if="restaurant.delivery" class="card-text">Delivery: Yes</span>
+            <span v-else class="card-text">Delivery: No</span>
+            <!-- <p class="chip desc">Description: {{ restaurant.description }}</p> -->
+            <!-- </div> -->
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -66,11 +75,22 @@ export default {
   color: #5cdb95;
 }
 
-.container .card-body h2:hover,
-.container .card-body h2.router-link-active,
-.container .card-body h2.router-link-exact-active {
+.container a:hover,
+.container a.router-link-active,
+.container a.router-link-exact-active {
   text-decoration: none;
   color: #05386b;
+}
+.res-img {
+  height: 10rem;
+}
+
+.container .card a .logo {
+  width: 20%;
+  position: absolute;
+  z-index: 1;
+  left: 2%;
+  top: 30%;
 }
 
 .container .card-body .card-text {
