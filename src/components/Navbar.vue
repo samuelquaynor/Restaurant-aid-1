@@ -1,10 +1,10 @@
 <template>
   <div class="">
-    <nav class="navbar navbar-light">
+    <nav class="navbar navbar-light justify-content-center">
       <div class="container-fluid">
         <router-link to="/">
           <a class="" href="#">
-            Resturant Aid
+            Restuarant Aid
           </a>
         </router-link>
       </div>
@@ -25,7 +25,6 @@ export default {
 nav.navbar {
   padding: 0 20px;
   background: #5cdb95;
-  width: 100%;
   height: 4rem;
 }
 nav .container-fluid a {

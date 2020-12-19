@@ -1,38 +1,36 @@
 <template>
-  <div class="index">
     <div class="container">
-      <div class="card" v-for="restaurant in $store.state.restaurants" :key="restaurant.id">
-        <router-link
-          tag="a"
-          :to="{
-                name: 'restaurant',
-                params: { name: restaurant.name, id: restaurant.id },
-              }"
-        >
-          <img
-            :src="banner + restaurant.banner"
-            class="card-img-top res-img"
-            :alt="restaurant.name + ' banner'"
-          />
-          <img
-            class="logo img-thumbnail img"
-            :src="banner + restaurant.logo"
-            :alt="restaurant.name + ' logo'"
-          />
-          <div class="card-body">
-            <h2 class="card-title">{{ restaurant.name }}</h2>
-
-            <!-- <div class="hold-em"> -->
-            <span class="card-text">Location: {{ restaurant.city }}</span>
-            <span v-if="restaurant.delivery" class="card-text">Delivery: Yes</span>
-            <span v-else class="card-text">Delivery: No</span>
-            <!-- <p class="chip desc">Description: {{ restaurant.description }}</p> -->
-            <!-- </div> -->
-          </div>
-        </router-link>
-      </div>
+        <div class="row gutters-sm">
+            <div class="col-lg-4 col-sm-12 col-md-4" v-for="restaurant in $store.state.restaurants" :key="restaurant.id">
+                <div class="card">
+                    <router-link
+                    tag="a"
+                    :to="{
+                            name: 'restaurant',
+                            params: { name: restaurant.name, id: restaurant.id },
+                        }"
+                    >
+                    <img
+                    :src="banner + restaurant.banner"
+                    class="card-img-top res-img"
+                    :alt="restaurant.name + ' banner'"
+                    />
+                    <img
+                        class="logo img-thumbnail img"
+                        :src="banner + restaurant.logo"
+                        :alt="restaurant.name + ' logo'"
+                    />
+                    <div class="card-body">
+                        <h6 class="mb-0">{{ restaurant.name }}</h6>
+                        <p class="text-muted text-sm mb-0">Location: {{ restaurant.city }}</p>
+                        <p v-if="restaurant.delivery" class="mb-0 text-muted text-sm">Delivery: Yes</p>
+                        <p v-else class="mb-0 text-muted text-sm">Delivery: No</p>
+                    </div>
+                    </router-link>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -54,50 +52,41 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-.index {
-  height: 100%;
-}
-.container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 30px;
-  margin-top: 3rem;
-}
+    a, a:hover{
+        text-decoration: none!important;
+        color: rgba(0, 0, 0, 0.877)!important;
+    }
 
-.container .card {
-  /* background: #5cdb95; */
-  text-align: center;
-  height: 100%;
-  padding: 0.5rem;
-}
+    
+    .res-img{
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        z-index: 0;
+        background-position: 50% center;
+        background-repeat: no-repeat;
+    }
 
-.container .card-body h2.card-title {
-  color: #5cdb95;
-}
+    .img-thumbnail{
+        border-radius: 0.70rem;
 
-.container a:hover,
-.container a.router-link-active,
-.container a.router-link-exact-active {
-  text-decoration: none;
-  color: #05386b;
-}
-.res-img {
-  height: 10rem;
-}
+    }
 
-.container .card a .logo {
-  width: 20%;
-  position: absolute;
-  z-index: 1;
-  left: 2%;
-  top: 30%;
-}
+    .logo{
+        width: 20%;
+        top: 100px;
+        left: 15px;
+        position: absolute;
+        z-index: 1;
+    }
 
-.container .card-body .card-text {
-  background: #05386b;
-  color: #fff;
-  padding: 0.3rem;
-  border-radius: 20px;
-  margin: 0.2rem;
-}
+    .card{
+        border: none!important;
+    }
+
+    .card-body{
+        padding:10px 0!important;
+    }
 </style>
