@@ -46,6 +46,11 @@ const actions = {
               logo
               banner
               delivery
+              tagline
+              address
+              city
+              pickup
+              delivery
               meals {
                 id
                 name
