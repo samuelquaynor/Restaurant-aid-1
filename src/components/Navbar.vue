@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <nav class="navbar navbar-light justify-content-center">
+    <nav class="navbar navbar-light justify-content-center sticky-top">
       <div class="container-fluid">
         <router-link to="/">
           <a class="" href="#">
